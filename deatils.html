@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>와디즈 - 샘플</title>
+
+    <!--
+    - favicon
+  -->
+    <link
+      rel="shortcut icon"
+      href="./assets/images/logo/favicon.ico"
+      type="image/x-icon"
+    />
+
+    <!--
+    - custom css link
+  -->
+    <link rel="stylesheet" href="./assets/css/style-prefix.css" />
+
+    <!--
+    - google font link
+  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <div class="overlay" data-overlay></div>
+
+    <!--
+    - MODAL
+  -->
+
+    <!--
+    - NOTIFICATION TOAST
+  -->
+    <div class="notification-toast" data-toast>
+      <button class="toast-close-btn" data-toast-close>
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+
+      <div class="toast-banner">
+        <img
+          src="./assets/images/products/jewellery-1.jpg"
+          alt="로즈 골드 귀걸이"
+          width="80"
+          height="70"
+        />
+      </div>
+
+      <div class="toast-detail">
+        <p class="toast-message">방금 누군가 구매했습니다</p>
+
+        <p class="toast-title">로즈 골드 귀걸이</p>
+
+        <p class="toast-meta"><time datetime="PT2M">2분</time> 전</p>
+      </div>
+    </div>
+
+    <!--
+- HEADER
+-->
+
+    <header>
+      <div class="header-top">
+        <div class="container">
+          <ul class="header-social-container">
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+          </ul>
+
+          <div class="header-alert-news">
+            <p>
+              <b>무료 배송</b>
+              이번 주 $55 이상 주문 시
+            </p>
+          </div>
+
+          <div class="header-top-actions">
+            <select name="currency">
+              <option value="usd">USD &dollar;</option>
+              <option value="eur">EUR &euro;</option>
+            </select>
+
+            <select name="language">
+              <option value="en-US">영어</option>
+              <option value="es-ES">스페인어</option>
+              <option value="fr">프랑스어</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="header-main">
+        <div class="container">
+          <a href="./index.html" class="header-logo">
+            <img
+              src="./assets/images/logo/logo.svg"
+              alt="Anon 로고"
+              width="120"
+              height="36"
+            />
+          </a>
+
+          <div class="header-search-container">
+            <input
+              type="search"
+              name="search"
+              class="search-field"
+              placeholder="상품명을 입력하세요..."
+            />
+
+            <button class="search-btn">
+              <ion-icon name="search-outline"></ion-icon>
+            </button>
+          </div>
+
+          <div class="header-user-actions">
+            <button class="action-btn">
+              <ion-icon name="person-outline"></ion-icon>
+            </button>
+
+            <button class="action-btn">
+              <ion-icon name="heart-outline"></ion-icon>
+              <span class="count">0</span>
+            </button>
+
+            <button class="action-btn">
+              <ion-icon name="bag-handle-outline"></ion-icon>
+              <span class="count">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <nav class="desktop-navigation-menu">
+        <div class="container">
+          <ul class="desktop-menu-category-list">
+            <li class="menu-category">
+              <a href="#" class="menu-title">홈</a>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">카테고리</a>
+
+              <div class="dropdown-panel">
+                <ul class="dropdown-panel-list">
+                  <li class="menu-title">
+                    <a href="#">전자제품</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">데스크탑</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">노트북</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">카메라</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">태블릿</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">헤드폰</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">
+                      <img
+                        src="./assets/images/electronics-banner-1.jpg"
+                        alt="헤드폰 컬렉션"
+                        width="250"
+                        height="119"
+                      />
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="dropdown-panel-list">
+                  <li class="menu-title">
+                    <a href="#">남성</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">정장</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">캐주얼</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">운동복</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">재킷</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">선글라스</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">
+                      <img
+                        src="./assets/images/mens-banner.jpg"
+                        alt="남성 패션"
+                        width="250"
+                        height="119"
+                      />
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="dropdown-panel-list">
+                  <li class="menu-title">
+                    <a href="#">여성</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">정장</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">캐주얼</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">향수</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">화장품</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">가방</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">
+                      <img
+                        src="./assets/images/womens-banner.jpg"
+                        alt="여성 패션"
+                        width="250"
+                        height="119"
+                      />
+                    </a>
+                  </li>
+                </ul>
+
+                <ul class="dropdown-panel-list">
+                  <li class="menu-title">
+                    <a href="#">전자제품</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">스마트워치</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">스마트TV</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">키보드</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">마우스</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">마이크</a>
+                  </li>
+
+                  <li class="panel-list-item">
+                    <a href="#">
+                      <img
+                        src="./assets/images/electronics-banner-2.jpg"
+                        alt="마우스 컬렉션"
+                        width="250"
+                        height="119"
+                      />
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">남성</a>
+
+              <ul class="dropdown-list">
+                <li class="dropdown-item">
+                  <a href="#">셔츠</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">반바지 & 청바지</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">안전화</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">지갑</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">여성</a>
+
+              <ul class="dropdown-list">
+                <li class="dropdown-item">
+                  <a href="#">드레스 & 프록</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">귀걸이</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">목걸이</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">메이크업 키트</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">주얼리</a>
+
+              <ul class="dropdown-list">
+                <li class="dropdown-item">
+                  <a href="#">귀걸이</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">커플 반지</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">목걸이</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">팔찌</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">향수</a>
+
+              <ul class="dropdown-list">
+                <li class="dropdown-item">
+                  <a href="#">의류용 향수</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">데오드란트</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">플로럴 향기</a>
+                </li>
+
+                <li class="dropdown-item">
+                  <a href="#">에어 프레쉬너</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">블로그</a>
+            </li>
+
+            <li class="menu-category">
+              <a href="#" class="menu-title">핫딜</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="mobile-bottom-navigation">
+        <button class="action-btn" data-mobile-menu-open-btn>
+          <ion-icon name="menu-outline"></ion-icon>
+        </button>
+
+        <button class="action-btn">
+          <ion-icon name="bag-handle-outline"></ion-icon>
+          <span class="count">0</span>
+        </button>
+
+        <button class="action-btn">
+          <ion-icon name="home-outline"></ion-icon>
+        </button>
+
+        <button class="action-btn">
+          <ion-icon name="heart-outline"></ion-icon>
+          <span class="count">0</span>
+        </button>
+
+        <button class="action-btn" data-mobile-menu-open-btn>
+          <ion-icon name="grid-outline"></ion-icon>
+        </button>
+      </div>
+
+      <nav class="mobile-navigation-menu has-scrollbar" data-mobile-menu>
+        <div class="menu-top">
+          <h2 class="menu-title">메뉴</h2>
+
+          <button class="menu-close-btn" data-mobile-menu-close-btn>
+            <ion-icon name="close-outline"></ion-icon>
+          </button>
+        </div>
+
+        <ul class="mobile-menu-category-list">
+          <li class="menu-category">
+            <a href="#" class="menu-title">홈</a>
+          </li>
+
+          <li class="menu-category">
+            <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">남성</p>
+
+              <div>
+                <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+              </div>
+            </button>
+
+            <ul class="submenu-category-list" data-accordion>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">셔츠</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">반바지 & 청바지</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">안전화</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">지갑</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">여성</p>
+
+              <div>
+                <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+              </div>
+            </button>
+
+            <ul class="submenu-category-list" data-accordion>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">드레스 & 프록</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">귀걸이</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">목걸이</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">메이크업 키트</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">주얼리</p>
+
+              <div>
+                <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+              </div>
+            </button>
+
+            <ul class="submenu-category-list" data-accordion>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">귀걸이</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">커플링</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">목걸이</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">팔찌</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <button class="accordion-menu" data-accordion-btn>
+              <p class="menu-title">향수</p>
+
+              <div>
+                <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+              </div>
+            </button>
+
+            <ul class="submenu-category-list" data-accordion>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">의류용 향수</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">데오드란트</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">플로럴 향기</a>
+              </li>
+              <li class="submenu-category">
+                <a href="#" class="submenu-title">에어 프레쉬너</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title">블로그</a>
+          </li>
+
+          <li class="menu-category">
+            <a href="#" class="menu-title">핫딜</a>
+          </li>
+        </ul>
+
+        <div class="menu-bottom">
+          <ul class="menu-category-list">
+            <li class="menu-category">
+              <button class="accordion-menu" data-accordion-btn>
+                <p class="menu-title">언어</p>
+                <ion-icon
+                  name="caret-back-outline"
+                  class="caret-back"
+                ></ion-icon>
+              </button>
+
+              <ul class="submenu-category-list" data-accordion>
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">영어</a>
+                </li>
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">스페인어</a>
+                </li>
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">프랑스어</a>
+                </li>
+              </ul>
+            </li>
+
+            <li class="menu-category">
+              <button class="accordion-menu" data-accordion-btn>
+                <p class="menu-title">통화</p>
+                <ion-icon
+                  name="caret-back-outline"
+                  class="caret-back"
+                ></ion-icon>
+              </button>
+
+              <ul class="submenu-category-list" data-accordion>
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">USD &dollar;</a>
+                </li>
+                <li class="submenu-category">
+                  <a href="#" class="submenu-title">EUR &euro;</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <ul class="menu-social-container">
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-instagram"></ion-icon>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" class="social-link">
+                <ion-icon name="logo-linkedin"></ion-icon>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <section
+      style="
+        background-color: #f9f9f9;
+        padding: 60px 20px;
+        font-family: sans-serif;
+        border-top: 1px solid #e0e0e0;
+        border-bottom: 1px solid #e0e0e0;
+      "
+    >
+      <div
+        style="
+          max-width: 1200px;
+          margin: 0 auto;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 40px;
+        "
+      >
+        <!-- Product Image -->
+        <div style="flex: 1 1 40%">
+          <img
+            src="https://cdn2.wadiz.kr/2024/10/24/7920e09a-fb04-46ce-b24e-3b0ad797328a.jpg/wadiz/resize/1200/format/jpg/quality/80/"
+            alt="제품 이미지"
+            style="
+              width: 100%;
+              border-radius: 8px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            "
+          />
+        </div>
+
+        <!-- Product Info -->
+        <div style="flex: 1 1 50%">
+          <h2 style="font-size: 32px; margin-bottom: 20px">
+            프리미엄 데일리 캐주얼 셔츠
+          </h2>
+          <p
+            style="
+              font-size: 16px;
+              color: #555;
+              line-height: 1.6;
+              margin-bottom: 20px;
+            "
+          >
+            데일리룩부터 세미 포멀룩까지 활용 가능한 캐주얼 셔츠입니다.
+            고급스러운 원단과 정교한 봉제 방식으로 제작되어 오랫동안 편안하게
+            착용하실 수 있습니다.
+          </p>
+          <p
+            style="
+              font-size: 24px;
+              font-weight: bold;
+              color: #000;
+              margin-bottom: 30px;
+            "
+          >
+            ₩49,000
+          </p>
+
+          <button
+            style="
+              padding: 12px 30px;
+              background-color: #000;
+              color: #fff;
+              border: none;
+              border-radius: 4px;
+              font-size: 16px;
+              cursor: pointer;
+            "
+          >
+            장바구니에 담기
+          </button>
+        </div>
+      </div>
+
+      <!-- 상세 정보 -->
+      <div
+        style="
+          max-width: 1200px;
+          margin: 60px auto 0;
+          line-height: 1.7;
+          color: #444;
+        "
+      >
+        <h3
+          style="
+            font-size: 24px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #ccc;
+            padding-bottom: 5px;
+          "
+        >
+          상세 정보
+        </h3>
+        <ul style="margin-left: 20px; margin-bottom: 30px">
+          <li>• 제품명: 프리미엄 데일리 셔츠</li>
+          <li>• 제조국: 대한민국</li>
+          <li>• 제조사: Anon Co., Ltd.</li>
+          <li>• 색상: 화이트 / 블랙 / 네이비</li>
+          <li>• 사이즈: S, M, L, XL</li>
+          <li>• 소재: 코튼 100%</li>
+        </ul>
+
+        <h3 style="font-size: 20px; margin-bottom: 10px">특징</h3>
+        <ul style="margin-left: 20px; margin-bottom: 30px">
+          <li>✔️ 부드러운 촉감의 프리미엄 원단 사용</li>
+          <li>✔️ 자연스러운 실루엣을 살려주는 레귤러 핏</li>
+          <li>✔️ 다양한 계절에 착용 가능한 중간 두께</li>
+        </ul>
+
+        <h3 style="font-size: 20px; margin-bottom: 10px">사이즈 가이드</h3>
+        <table
+          style="width: 100%; border-collapse: collapse; margin-bottom: 30px"
+        >
+          <thead>
+            <tr style="background-color: #eee">
+              <th style="padding: 10px; border: 1px solid #ccc">사이즈</th>
+              <th style="padding: 10px; border: 1px solid #ccc">어깨너비</th>
+              <th style="padding: 10px; border: 1px solid #ccc">가슴둘레</th>
+              <th style="padding: 10px; border: 1px solid #ccc">총장</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ccc">S</td>
+              <td style="padding: 10px; border: 1px solid #ccc">42cm</td>
+              <td style="padding: 10px; border: 1px solid #ccc">98cm</td>
+              <td style="padding: 10px; border: 1px solid #ccc">68cm</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ccc">M</td>
+              <td style="padding: 10px; border: 1px solid #ccc">44cm</td>
+              <td style="padding: 10px; border: 1px solid #ccc">102cm</td>
+              <td style="padding: 10px; border: 1px solid #ccc">70cm</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px; border: 1px solid #ccc">L</td>
+              <td style="padding: 10px; border: 1px solid #ccc">46cm</td>
+              <td style="padding: 10px; border: 1px solid #ccc">106cm</td>
+              <td style="padding: 10px; border: 1px solid #ccc">72cm</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3 style="font-size: 20px; margin-bottom: 10px">
+          배송 및 교환/반품 안내
+        </h3>
+        <p style="margin-bottom: 8px">
+          • 배송 기간: 평균 2~3일 (주말/공휴일 제외)
+        </p>
+        <p style="margin-bottom: 8px">
+          • 교환/반품은 상품 수령 후 7일 이내 신청 가능합니다.
+        </p>
+        <p style="margin-bottom: 8px">
+          • 상품 하자 및 오배송 시, 왕복 배송비는 당사에서 부담합니다.
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-category">
+        <div class="container">
+          <h2 class="footer-category-title">브랜드 디렉토리</h2>
+
+          <div class="footer-category-box">
+            <h3 class="category-box-title">패션 :</h3>
+
+            <a href="#" class="footer-category-link">티셔츠</a>
+            <a href="#" class="footer-category-link">셔츠</a>
+            <a href="#" class="footer-category-link">반바지 & 청바지</a>
+            <a href="#" class="footer-category-link">재킷</a>
+            <a href="#" class="footer-category-link">드레스 & 원피스</a>
+            <a href="#" class="footer-category-link">속옷</a>
+            <a href="#" class="footer-category-link">스타킹</a>
+          </div>
+
+          <div class="footer-category-box">
+            <h3 class="category-box-title">신발 :</h3>
+
+            <a href="#" class="footer-category-link">스포츠</a>
+            <a href="#" class="footer-category-link">정장용</a>
+            <a href="#" class="footer-category-link">부츠</a>
+            <a href="#" class="footer-category-link">캐주얼</a>
+            <a href="#" class="footer-category-link">카우보이 부츠</a>
+            <a href="#" class="footer-category-link">안전화</a>
+            <a href="#" class="footer-category-link">파티용 신발</a>
+            <a href="#" class="footer-category-link">브랜드 신발</a>
+            <a href="#" class="footer-category-link">퍼스트 카피</a>
+            <a href="#" class="footer-category-link">롱 부츠</a>
+          </div>
+
+          <div class="footer-category-box">
+            <h3 class="category-box-title">보석류 :</h3>
+
+            <a href="#" class="footer-category-link">목걸이</a>
+            <a href="#" class="footer-category-link">귀걸이</a>
+            <a href="#" class="footer-category-link">커플 반지</a>
+            <a href="#" class="footer-category-link">펜던트</a>
+            <a href="#" class="footer-category-link">크리스탈</a>
+            <a href="#" class="footer-category-link">팔찌</a>
+            <a href="#" class="footer-category-link">팔찌</a>
+            <a href="#" class="footer-category-link">코걸이</a>
+            <a href="#" class="footer-category-link">체인</a>
+            <a href="#" class="footer-category-link">귀걸이</a>
+            <a href="#" class="footer-category-link">커플 반지</a>
+          </div>
+
+          <div class="footer-category-box">
+            <h3 class="category-box-title">화장품 :</h3>
+
+            <a href="#" class="footer-category-link">샴푸</a>
+            <a href="#" class="footer-category-link">바디워시</a>
+            <a href="#" class="footer-category-link">페이스워시</a>
+            <a href="#" class="footer-category-link">메이크업 키트</a>
+            <a href="#" class="footer-category-link">아이라이너</a>
+            <a href="#" class="footer-category-link">립스틱</a>
+            <a href="#" class="footer-category-link">향수</a>
+            <a href="#" class="footer-category-link">바디 솝</a>
+            <a href="#" class="footer-category-link">스크럽</a>
+            <a href="#" class="footer-category-link">헤어 젤</a>
+            <a href="#" class="footer-category-link">헤어 컬러</a>
+            <a href="#" class="footer-category-link">염색약</a>
+            <a href="#" class="footer-category-link">선크림</a>
+            <a href="#" class="footer-category-link">스킨 로션</a>
+            <a href="#" class="footer-category-link">아이라이너</a>
+            <a href="#" class="footer-category-link">립스틱</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-nav">
+        <div class="container">
+          <ul class="footer-nav-list">
+            <li class="footer-nav-item">
+              <h2 class="nav-title">인기 카테고리</h2>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">패션</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">전자제품</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">화장품</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">건강</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">시계</a>
+            </li>
+          </ul>
+
+          <ul class="footer-nav-list">
+            <li class="footer-nav-item">
+              <h2 class="nav-title">제품</h2>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">가격 인하</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">신제품</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">베스트 세일</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">문의하기</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">사이트맵</a>
+            </li>
+          </ul>
+
+          <ul class="footer-nav-list">
+            <li class="footer-nav-item">
+              <h2 class="nav-title">회사 소개</h2>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">배송 안내</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">법적 고지</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">이용 약관</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">회사 소개</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">안전 결제</a>
+            </li>
+          </ul>
+
+          <ul class="footer-nav-list">
+            <li class="footer-nav-item">
+              <h2 class="nav-title">서비스</h2>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">가격 인하</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">신제품</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">베스트 세일</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">문의하기</a>
+            </li>
+
+            <li class="footer-nav-item">
+              <a href="#" class="footer-nav-link">사이트맵</a>
+            </li>
+          </ul>
+
+          <ul class="footer-nav-list">
+            <li class="footer-nav-item">
+              <h2 class="nav-title">연락처</h2>
+            </li>
+
+            <li class="footer-nav-item flex">
+              <div class="icon-box">
+                <ion-icon name="location-outline"></ion-icon>
+              </div>
+
+              <address class="content">
+                419 State 414 Rte Beaver Dams, 뉴욕(NY), 14812, 미국
+              </address>
+            </li>
+
+            <li class="footer-nav-item flex">
+              <div class="icon-box">
+                <ion-icon name="call-outline"></ion-icon>
+              </div>
+
+              <a href="tel:+607936-8058" class="footer-nav-link"
+                >(607) 936-8058</a
+              >
+            </li>
+
+            <li class="footer-nav-item flex">
+              <div class="icon-box">
+                <ion-icon name="mail-outline"></ion-icon>
+              </div>
+
+              <a href="mailto:example@gmail.com" class="footer-nav-link"
+                >example@gmail.com</a
+              >
+            </li>
+          </ul>
+
+          <ul class="footer-nav-list">
+            <li class="footer-nav-item">
+              <h2 class="nav-title">팔로우하기</h2>
+            </li>
+
+            <li>
+              <ul class="social-link">
+                <li class="footer-nav-item">
+                  <a href="#" class="footer-nav-link">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </a>
+                </li>
+
+                <li class="footer-nav-item">
+                  <a href="#" class="footer-nav-link">
+                    <ion-icon name="logo-twitter"></ion-icon>
+                  </a>
+                </li>
+
+                <li class="footer-nav-item">
+                  <a href="#" class="footer-nav-link">
+                    <ion-icon name="logo-linkedin"></ion-icon>
+                  </a>
+                </li>
+
+                <li class="footer-nav-item">
+                  <a href="#" class="footer-nav-link">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="container">
+          <img
+            src="./assets/images/payment.png"
+            alt="결제 수단"
+            class="payment-img"
+          />
+
+          <p class="copyright">
+            저작권 &copy; <a href="#">Anon</a> 모든 권리 보유.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!--
+    - custom js link
+  -->
+    <script src="./assets/js/script.js"></script>
+
+    <!--
+    - ionicon link
+  -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
