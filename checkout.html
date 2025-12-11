@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>결제 - Anon 스토어</title>
+  <style>
+    :root{ --bg:#ffffff; --text:#1f2937; --muted:#6b7280; --brand:#111827; --line:#e5e7eb; --ok:#10b981; --accent:#ef4444 }
+    body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; margin:0; background:var(--bg); color:var(--text);} 
+    header{border-bottom:1px solid var(--line); position:sticky; top:0; background:#fff; z-index:10}
+    .wrap{max-width:1100px; margin:0 auto; padding:0 16px;}
+    .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
+    .logo a{color:var(--brand); font-weight:700; text-decoration:none; font-size:1.1rem}
+
+    main{padding:24px 0}
+    h1{font-size:1.5rem; margin:0 0 16px}
+    .grid{display:grid; grid-template-columns:1fr; gap:16px}
+    @media(min-width:900px){ .grid{ grid-template-columns:1.5fr 1fr } }
+
+    .card{border:1px solid var(--line); border-radius:10px; padding:14px}
+    .row{display:grid; grid-template-columns:1fr 1fr; gap:12px}
+    .field{display:flex; flex-direction:column; gap:6px; margin-bottom:10px}
+    .field label{font-size:.9rem; color:var(--muted)}
+    .field input, .field select, .field textarea{border:1px solid var(--line); border-radius:8px; padding:10px}
+    .summary-row{display:flex; justify-content:space-between; padding:8px 0; font-size:.95rem}
+    .summary-row.total{font-weight:700; border-top:1px dashed var(--line); margin-top:6px; padding-top:12px}
+    .btn{appearance:none; border:1px solid var(--line); background:#fff; border-radius:8px; padding:10px 14px; cursor:pointer}
+    .btn-primary{background:var(--brand); border-color:var(--brand); color:#fff}
+    .notice{font-size:.9rem; color:var(--muted)}
+    .success{border:1px solid #d1fae5; background:#ecfdf5; color:#064e3b; border-radius:10px; padding:14px;}
+    .danger{border:1px solid #fee2e2; background:#fef2f2; color:#7f1d1d; border-radius:10px; padding:14px;}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <div class="logo"><a href="./index.html">Anon 스토어</a></div>
+    <div><a href="./cart.html">장바구니</a></div>
+  </div>
+</header>
+<main class="wrap">
+  <h1>결제</h1>
+  <section id="empty" class="danger" style="display:none">장바구니가 비어 있습니다. <a href="./index.html">상품 보러가기</a> 또는 <a href="./cart.html">장바구니로 이동</a></section>
+
+  <div class="grid" id="checkoutGrid" style="display:none">
+    <form id="payForm" class="card" autocomplete="on">
+      <h2 style="margin-top:0">배송 정보</h2>
+      <div class="row">
+        <div class="field"><label>이름</label><input id="name" required placeholder="홍길동"></div>
+        <div class="field"><label>전화번호</label><input id="phone" required placeholder="010-0000-0000"></div>
+      </div>
+      <div class="row">
+        <div class="field"><label>이메일</label><input id="email" type="email" required placeholder="user@example.com"></div>
+        <div class="field"><label>우편번호</label><input id="zip" required placeholder="12345"></div>
+      </div>
+      <div class="field"><label>주소</label><input id="addr" required placeholder="도로명주소"></div>
+      <div class="row">
+        <div class="field"><label>도시</label><input id="city" required></div>
+        <div class="field"><label>국가</label>
+          <select id="country"><option value="KR">대한민국</option><option value="US">미국</option><option value="JP">일본</option></select>
+        </div>
+      </div>
+
+      <h2>결제 수단</h2>
+      <div class="row">
+        <div class="field"><label>결제 방법</label>
+          <select id="method"><option value="card">신용/체크카드</option><option value="bank">무통장입금</option><option value="virtual">가상결제(데모)</option></select>
+        </div>
+        <div class="field"><label>프로모션 코드 (선택)</label><input id="promo" placeholder="예: SAVE10"></div>
+      </div>
+
+      <div id="cardFields">
+        <div class="row">
+          <div class="field"><label>카드 번호</label><input id="card" inputmode="numeric" placeholder="1111 2222 3333 4444"></div>
+          <div class="field"><label>유효기간 (MM/YY)</label><input id="exp" placeholder="12/28"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>카드 소유자</label><input id="holder" placeholder="홍길동"></div>
+          <div class="field"><label>CVC</label><input id="cvc" inputmode="numeric" placeholder="123"></div>
+        </div>
+      </div>
+
+      <div class="field"><label><input type="checkbox" id="agree" required> 주문/개인정보 처리 동의</label></div>
+      <div class="row"><button class="btn btn-primary" type="submit">결제 진행</button><button class="btn" type="button" id="backToCart">장바구니로</button></div>
+      <p class="notice">* 실제 결제 게이트웨이 연동은 포함하지 않은 데모 페이지입니다.</p>
+    </form>
+
+    <aside class="card" id="summary">
+      <h2 style="margin-top:0">주문 요약</h2>
+      <div id="items"></div>
+      <div class="summary-row"><span>상품 소계</span><strong id="subtotal">₩0</strong></div>
+      <div class="summary-row"><span>배송비</span><span id="shipping">₩0</span></div>
+      <div class="summary-row"><span>할인</span><span id="discount">-₩0</span></div>
+      <div class="summary-row total"><span>결제 금액</span><strong id="grandTotal">₩0</strong></div>
+    </aside>
+  </div>
+
+  <section id="successBox" class="success" style="display:none"></section>
+</main>
+<footer>
+  <div class="wrap">© Anon. 모든 권리 보유.</div>
+</footer>
+<script>
+  const CART_KEY = 'anon_cart_v1';
+  const fmtKRW = v => new Intl.NumberFormat('ko-KR',{style:'currency', currency:'KRW'}).format(Math.max(0, v||0));
+  const readCart = () => { try{ return JSON.parse(localStorage.getItem(CART_KEY))||[] }catch(e){ return [] } };
+
+  function renderSummary(items){
+    const itemsBox = document.getElementById('items');
+    itemsBox.innerHTML='';
+    let subtotal = 0;
+    items.forEach(i=>{
+      const line = document.createElement('div'); line.style.display='flex'; line.style.justifyContent='space-between'; line.style.padding='6px 0';
+      const qty = Number(i.qty||1);
+      const price = Number(i.price||0);
+      subtotal += qty*price;
+      line.innerHTML = `<div style="color:#6b7280">${i.title||'상품'} x ${qty}</div><div><strong>${fmtKRW(qty*price)}</strong></div>`;
+      itemsBox.appendChild(line);
+    });
+    const shipping = subtotal>=55000?0:3000;
+    const discount = 0;
+    const total = subtotal + shipping - discount;
+    document.getElementById('subtotal').textContent = fmtKRW(subtotal);
+    document.getElementById('shipping').textContent = fmtKRW(shipping);
+    document.getElementById('discount').textContent = '-'+fmtKRW(discount).replace('₩','');
+    document.getElementById('grandTotal').textContent = fmtKRW(total);
+    return {subtotal, shipping, discount, total};
+  }
+
+  function init(){
+    const items = readCart();
+    if(items.length===0){ document.getElementById('empty').style.display='block'; return; }
+    document.getElementById('checkoutGrid').style.display='grid';
+    renderSummary(items);
+
+    document.getElementById('method').addEventListener('change', (e)=>{
+      document.getElementById('cardFields').style.display = e.target.value==='card' ? 'block' : 'none';
+    });
+    document.getElementById('backToCart').addEventListener('click', ()=>location.href='./cart.html');
+
+    document.getElementById('payForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const { total } = renderSummary(readCart());
+      if(total<=0){ alert('결제 금액이 0원입니다.'); return; }
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const method = document.getElementById('method').value;
+      const agree = document.getElementById('agree').checked;
+      if(!agree){ alert('주문/개인정보 처리에 동의해주세요.'); return; }
+
+      // 아주 단순한 유효성 검사 (데모)
+      if(method==='card'){
+        const card = document.getElementById('card').value.replace(/\s+/g,'');
+        const exp = document.getElementById('exp').value.trim();
+        const cvc = document.getElementById('cvc').value.trim();
+        if(card.length<12 || !exp || cvc.length<3){ alert('카드 정보를 올바르게 입력해주세요.'); return; }
+      }
+
+      const orderId = 'ORD-' + Math.random().toString(36).slice(2,8).toUpperCase();
+      const payload = { orderId, name, email, method, total, items: readCart(), when: new Date().toISOString() };
+      localStorage.setItem('anon_last_order', JSON.stringify(payload));
+      localStorage.removeItem(CART_KEY);
+
+      document.getElementById('checkoutGrid').style.display='none';
+      const s = document.getElementById('successBox');
+      s.style.display='block';
+      s.innerHTML = `<h2 style=\"margin-top:0\">주문 완료</h2>
+        <p><strong>${name}</strong> 님, 주문이 정상적으로 접수되었습니다.</p>
+        <p>주문번호: <strong>${orderId}</strong></p>
+        <p>결제 방법: <strong>${method}</strong> · 결제 금액: <strong>${fmtKRW(total)}</strong></p>
+        <p class=\"notice\">* 이 페이지는 데모로, 실제 결제 승인/영수증 이메일 발송은 포함되어 있지 않습니다.</p>
+        <div style=\"display:flex; gap:8px;\">
+          <button class=\"btn\" onclick=\"location.href='./index.html'\">계속 쇼핑하기</button>
+          <button class=\"btn\" onclick=\"location.href='./cart.html'\">장바구니로 이동</button>
+        </div>`;
+    });
+  }
+
+  init();
+</script>
+</body>
+</html>
