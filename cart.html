@@ -3,18 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>장바구니 - Anon 스토어</title>
+  <title>장바구니 (데모) - Anon 스토어</title>
   <style>
-    :root{
-      --bg:#ffffff; --text:#1f2937; --muted:#6b7280; --brand:#111827; --accent:#ef4444; --ok:#10b981; --line:#e5e7eb;
-    }
+    :root{ --bg:#ffffff; --text:#1f2937; --muted:#6b7280; --brand:#111827; --accent:#ef4444; --ok:#10b981; --line:#e5e7eb }
     body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,"Apple SD Gothic Neo","Noto Sans KR",sans-serif; margin:0; background:var(--bg); color:var(--text);} 
     header{border-bottom:1px solid var(--line); position:sticky; top:0; background:#fff; z-index:10}
     .wrap{max-width:1100px; margin:0 auto; padding:0 16px;}
     .nav{display:flex; align-items:center; justify-content:space-between; padding:14px 0}
     .logo a{color:var(--brand); font-weight:700; text-decoration:none; font-size:1.1rem}
     .cart-count{font-size:.875rem; color:var(--muted)}
-
     main{padding:24px 0}
     h1{font-size:1.5rem; margin:0 0 16px}
     .cart{display:grid; grid-template-columns:1fr; gap:16px}
@@ -25,34 +22,28 @@
     .qty{display:flex; align-items:center; gap:6px}
     .qty input{width:48px; text-align:center; padding:6px; border:1px solid var(--line); border-radius:6px}
     .btn{appearance:none; border:1px solid var(--line); background:#fff; border-radius:8px; padding:8px 12px; cursor:pointer}
-    .btn:disabled{opacity:.6; cursor:not-allowed}
-    .btn-outline{border-color:#d1d5db}
-    .btn-danger{background:var(--accent); border-color:var(--accent); color:#fff}
     .btn-primary{background:var(--brand); border-color:var(--brand); color:#fff}
-
     .summary{border:1px solid var(--line); border-radius:10px; padding:14px}
     .summary-row{display:flex; justify-content:space-between; padding:8px 0; font-size:.95rem}
     .summary-row.total{font-weight:700; border-top:1px dashed var(--line); margin-top:6px; padding-top:12px}
     .actions{display:flex; gap:10px; margin-top:12px}
-
     .empty{padding:24px; text-align:center; border:1px dashed var(--line); border-radius:10px; color:var(--muted)}
+    .demo-badge{font-size:.75rem; color:#6b7280}
     footer{border-top:1px solid var(--line); margin-top:24px;}
     footer .wrap{padding:18px 16px; font-size:.875rem; color:var(--muted)}
-
-    @media(min-width:900px){
-      .grid{display:grid; grid-template-columns:2fr 1fr; gap:16px}
-    }
+    @media(min-width:900px){ .grid{display:grid; grid-template-columns:2fr 1fr; gap:16px} }
   </style>
 </head>
 <body>
 <header>
   <div class="wrap nav">
-    <div class="logo"><a href="./index.html">Anon 스토어</a></div>
+    <div class="logo"><a href="./index.html">Anon 스토어</a> <span class="demo-badge">(데모)</span></div>
     <div class="cart-count">장바구니 <span id="cartCount">0</span>개</div>
   </div>
 </header>
 <main class="wrap">
   <h1>장바구니</h1>
+  <p class="demo-badge">* 이 페이지는 더미(데모) 모드로, 상세 페이지의 대표 상품이 자동으로 담겨 보입니다.</p>
   <div class="grid">
     <section id="cartList" class="cart"></section>
     <aside class="summary">
@@ -61,10 +52,9 @@
       <div class="summary-row"><span>할인</span><span id="discount">-₩0</span></div>
       <div class="summary-row total"><span>결제 예정 금액</span><strong id="grandTotal">₩0</strong></div>
       <div class="actions">
-        <button class="btn btn-outline" id="continue">계속 쇼핑하기</button>
+        <button class="btn" id="continue">계속 쇼핑하기</button>
         <button class="btn btn-primary" id="checkout">결제하기</button>
       </div>
-      <p style="color:var(--muted); font-size:.85rem; margin-top:8px">* 현재 프로모션: ₩55,000 이상 무료 배송</p>
     </aside>
   </div>
   <div id="emptyBox" class="empty" style="display:none">장바구니가 비어 있습니다. <a href="./index.html">상품 보러가기</a></div>
@@ -73,16 +63,26 @@
   <div class="wrap">© Anon. 모든 권리 보유.</div>
 </footer>
 <script>
-  // 통화 포맷 (KRW 기본)
-  const fmtKRW = v => new Intl.NumberFormat('ko-KR',{style:'currency', currency:'KRW'}).format(Math.max(0, v||0));
-
-  // 로컬스토리지 키
+  const DEMO_MODE = true; // ✅ 데모 모드 켜기
   const CART_KEY = 'anon_cart_v1';
+  const fmtKRW = v => new Intl.NumberFormat('ko-KR',{style:'currency', currency:'KRW'}).format(Math.max(0, v||0));
+  const readCart = () => { try{ return JSON.parse(localStorage.getItem(CART_KEY))||[] }catch(e){ return [] } };
+  const writeCart = (items) => localStorage.setItem(CART_KEY, JSON.stringify(items));
 
-  function readCart(){
-    try{ return JSON.parse(localStorage.getItem(CART_KEY))||[] }catch(e){ return [] }
+  function seedCartIfEmpty(){
+    const items = readCart();
+    if(items.length>0) return;
+    // 상세 페이지(deatils.html)의 대표 상품을 더미로 자동 담기
+    const sample = {
+      title:'프리미엄 데일리 캐주얼 셔츠',
+      price:49000,
+      qty:1,
+      size:'M',
+      color:'화이트',
+      image:'./assets/shirt.jpg'
+    };
+    writeCart([sample]);
   }
-  function writeCart(items){ localStorage.setItem(CART_KEY, JSON.stringify(items)); }
 
   function render(){
     const list = document.getElementById('cartList');
@@ -90,7 +90,6 @@
     const empty = document.getElementById('emptyBox');
     const items = readCart();
     countEl.textContent = items.reduce((n,i)=>n+Number(i.qty||1),0);
-
     list.innerHTML = '';
     if(items.length===0){ empty.style.display='block'; document.querySelector('.summary').style.display='none'; return; }
     empty.style.display='none'; document.querySelector('.summary').style.display='block';
@@ -106,7 +105,7 @@
         <div>
           <div class="item-title">${item.title||'상품'}</div>
           <div class="item-meta">사이즈: ${item.size||'-'} · 색상: ${item.color||'-'}</div>
-          <button class="btn btn-outline" data-remove="${idx}">삭제</button>
+          <button class="btn" data-remove="${idx}">삭제</button>
         </div>
         <div style="text-align:right">
           <div style="font-weight:700; margin-bottom:8px">${fmtKRW(price*qty)}</div>
@@ -115,16 +114,12 @@
             <input type="number" min="1" value="${qty}" data-qty="${idx}">
             <button class="btn" data-inc="${idx}">+</button>
           </div>
-        </div>
-      `;
+        </div>`;
       list.appendChild(el);
     });
-
-    // 배송/할인 정책: 55,000원 이상 무료배송
     const shipping = subtotal>=55000 ? 0 : 3000;
-    const discount = 0; // 필요시 수정
+    const discount = 0;
     const total = subtotal + shipping - discount;
-
     document.getElementById('subtotal').textContent = fmtKRW(subtotal);
     document.getElementById('shipping').textContent = fmtKRW(shipping);
     document.getElementById('discount').textContent = '-'+fmtKRW(discount).replace('₩','');
@@ -145,9 +140,10 @@
     if(idx!==null){ const items = readCart(); items[Number(idx)].qty = Math.max(1, Number(e.target.value||1)); writeCart(items); render(); }
   });
 
-  document.getElementById('continue').addEventListener('click', ()=>{ location.href = './index.html'; });
-  document.getElementById('checkout').addEventListener('click', ()=>{ location.href = './checkout.html'; });
+  document.getElementById('continue').addEventListener('click', ()=> location.href='./index.html');
+  document.getElementById('checkout').addEventListener('click', ()=> location.href='./checkout.html');
 
+  if(DEMO_MODE) seedCartIfEmpty();
   render();
 </script>
 </body>
